@@ -121,3 +121,10 @@ TrashWheel="Professor Trash Wheel")|>
   mutate (year=as.character(year)) |> 
   select(dumpster, month, year, date, weight=weight_tons, volume=volume_cubic_yards,bottles=plastic_bottles, polystyrene, cigarette=cigarette_butts,plastic=plastic_bags,wrappers,homes_powered,TrashWheel)
 ```
+
+Step 4: Combine these dataset with Mr. Trash Wheel datset to produce a single tidy dataset,.
+
+```{r}
+TW_df=bind_rows(Mr_df,Professor_df,Gwynnda_df)
+```
+
