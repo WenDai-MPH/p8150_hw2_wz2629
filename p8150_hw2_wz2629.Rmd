@@ -84,3 +84,16 @@ The `unemployment_df` data has `r nrow(unemployment_df)` observations and `r nco
 
 In Januarys in or after 1975 in which a democrat was president, the **average unemployment rate was `r filter(combine, month == "January", year >= 1975, president == "dem") |> pull(unemployment) |> mean() |> round(2)`**.  The average unemployment rate over the same time period in which a republican was president was `r filter(combine, month == "January", year >= 1975, president == "gop") |> pull(unemployment) |> mean() |> round(2)`.
 
+# Problem 2:
+
+Step 1: Tidy Mr. trashwheel's dataset
+```{r}
+Mr_df = read_excel("202309 Trash Wheel Collection Data.xlsx", sheet="Mr. Trash Wheel",skip=1,range="A2:N587") |> 
+  janitor::clean_names() |> 
+drop_na(dumpster) |> 
+  mutate(
+ homes_powered=weight_tons*500/30,
+TrashWheel="Mr.Trash Wheel")|> 
+  mutate (year=as.character(year)) |> 
+  select(dumpster, month, year, date, weight=weight_tons,volume=volume_cubic_yards, bottles=plastic_bottles,polystyrene,cigarette=cigarette_butts,glass=glass_bottles,bags=plastic_bags,wrappers,sports=sports_balls,homes_powered,TrashWheel)
+```
