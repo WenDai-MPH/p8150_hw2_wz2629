@@ -1,0 +1,14 @@
+---
+title: "p8150_hw2_wz2629"
+author: Wen Dai
+date: "2023-09-27"
+output: 
+  github_document
+---
+
+```{r message=FALSE}
+library (tidyverse)
+library(readxl)
+```
+
+
