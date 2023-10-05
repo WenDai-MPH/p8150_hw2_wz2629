@@ -126,5 +126,21 @@ Step 4: Combine these dataset with Mr. Trash Wheel datset to produce a single ti
 
 ```{r}
 TW_df=bind_rows(Mr_df,Professor_df,Gwynnda_df)
+
+July_2021_Gwynnda<-subset(Gwynnda_df,year=="2021" & month=="July")
+total_Cigarette_Gwynnda<-sum(pull(July_2021_Gwynnda,cigarette))
 ```
+
+Step 5: Write a paragaph about this data.
+
+The `Mr_df` data has `r nrow(Mr_df)` observations and `r ncol(Mr_df)` variables. The key variables are include: date, weight_tons, home_powered and Trashwheel.
+
+The `Professor_df` data has `r nrow(Professor_df)` observations and `r ncol(Professor_df)` variables.The key variables are include: date, weight_tons, homes_powered, and TrashWheel.
+
+The `Gwynnda_df` data has `r nrow(Gwynnda_df)` observations and `r ncol(Gwynnda_df)` variables.The key variables are included: date, weight_tons, homee_powered and trashwheel. 
+
+The total weight of trash collected by Professor Trash wheel is `r sum(pull(Professor_df,weight), na.rm = TRUE)` tons.
+The total number of cigarette butts collected by Gwynnda in July of 2021 is 16300.
+
+
 
