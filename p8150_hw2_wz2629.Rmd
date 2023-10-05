@@ -198,4 +198,17 @@ tidy_amyloid_df=pivot_longer(amyloid_df,
 The important steps in the import process is use reasonable variable names and use pivot to tidy the dataset. 
 The `amyloid_df` data has `r nrow(amyloid_df)` observations and `r ncol(amyloid_df)` variables.The important key variables are id and from time_0 to time_8.
 
+step 4:
+check whether some participants appear in only the baseline or amyloid dataset and commnet on your findings. Then combine the demographic and biomarker datasets and briefly describe the resulting dataset.
+```{r}
+unique_to_baseline <- anti_join(baseline_df,amyloid_df, by = "id")
+nrow(unique_to_baseline)
 
+unique_to_amyloid=anti_join(amyloid_df, baseline_df, by = "id")
+nrow(unique_to_amyloid)
+
+merged_data <- inner_join(amyloid_df, baseline_df, by = "id")
+nrow(merged_data)
+
+```
+The participants unique to the baseline are `r nrow(unique_to_baseline)`, and the participants unique to the amyloid are `r nrow(unique_to_amyloid)`.The `merged_data` has `r nrow(merged_data)` observations and `r ncol(merged_data)` variables. There are `r nrow(merged_data) `participants in the combined dataset that appear in both demographic and biomarker datasets.The most important key variables are id, baseline_age, onset_age, and apoe4. 
