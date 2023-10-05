@@ -58,3 +58,13 @@ Step 3: clean the data in unemployment.csv
   select(year, month, unemployment)
 
 ```
+
+step 4:
+Join the dataset by merging snp into pols, and merging unemployment into the result.
+```{r}
+combine = 
+  left_join(polmonth_df, snp_df) |>
+  left_join(x = _, y = unemployment_df)
+
+str(combine)
+```
