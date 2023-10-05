@@ -212,3 +212,11 @@ nrow(merged_data)
 
 ```
 The participants unique to the baseline are `r nrow(unique_to_baseline)`, and the participants unique to the amyloid are `r nrow(unique_to_amyloid)`.The `merged_data` has `r nrow(merged_data)` observations and `r ncol(merged_data)` variables. There are `r nrow(merged_data) `participants in the combined dataset that appear in both demographic and biomarker datasets.The most important key variables are id, baseline_age, onset_age, and apoe4. 
+
+step 5:
+export the result as CSV to your data directory.
+```{r}
+write.csv(merged_data,"merged_data.csv")
+
+```
+
